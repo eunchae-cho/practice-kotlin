@@ -21,6 +21,8 @@ repositories {
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
+	// 코루틴 라이브러리 추가
+	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.2")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
 
