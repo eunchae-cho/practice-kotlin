@@ -8,7 +8,7 @@ import kotlinx.coroutines.yield
  * 루틴과 코루틴의 차이
  * - co-routine: 협력하는 루틴 (=코드 모음)
  * */
-class Chapter2 {
+class Chapter02 {
     // suspend fun () - 다른 suspend fun() 호출
     suspend fun newRoutine() {
         val num1 = 1
@@ -24,17 +24,14 @@ class Chapter2 {
     }
 }
 
-suspend fun printWithTread(value: Any) {
-    println("[${Thread.currentThread().name}] $value")
-}
-
 // runBlocking -> 코루틴 세계로 연결, 함수 자체로 새로운 코루틴을 만든다.
+// blocking이 풀릴 때까지 스레드를 block 한다.
 fun main() = runBlocking {
     printWithTread("START")
     // launch - 반환값이 없는 코루틴을 만든다.
     // 만들어진 코드를 바로 실행하지 않고 넘어간다.
     launch {
-        Chapter2().newRoutine()
+        Chapter02().newRoutine()
     }
     printWithTread("main yield()")
     // 양보하는 코드
@@ -42,7 +39,3 @@ fun main() = runBlocking {
     yield()
     printWithTread("END")
 }
-// 실행결과
-// START
-// END
-// 3

@@ -31,7 +31,7 @@ import kotlinx.coroutines.yield
  * 동일 스레드에서 서로 다른 코루틴이 실행되는 경우 동일한 메모리(Heap Area, Stack Area)를 사용한다.
  * -> 동일 스레드에서 코루틴이 실행되면, 메모리 전체를 공유하므로 스레드보다 context switching cost가 낮다.
  * */
-class Chapter3 {
+class Chapter03 {
     // suspend fun () - 다른 suspend fun() 호출
     suspend fun newRoutine() {
         val num1 = 1
@@ -53,7 +53,7 @@ fun main() = runBlocking {
     // launch - 반환값이 없는 코루틴을 만든다.
     // 만들어진 코드를 바로 실행하지 않고 넘어간다.
     launch {
-        Chapter2().newRoutine()
+        Chapter03().newRoutine()
     }
     printWithTread("main yield()")
     // 양보하는 코드
