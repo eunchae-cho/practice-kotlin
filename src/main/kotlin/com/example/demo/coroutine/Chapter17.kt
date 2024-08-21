@@ -14,8 +14,8 @@ class Chapter17 {
 }
 
 suspend fun main() = runBlocking {
-     val result1 = call1()
-     val result2 = call2(result1)
+     val result1: Int = call01()
+     val result2: Int = call02(result1)
     printWithTread(result2)
 }
 
@@ -32,4 +32,13 @@ suspend fun call02(num: Int): Int {
         num * 2
         // await()는 coroutine 상위 클래스에서 여러 비동기 라이브러리에 지원해주는 어댑터
     }.await()
+}
+
+// 인터페이스 구현 가능
+interface AsyncCaller {
+    suspend fun call()
+}
+
+class AsyncCallerImpl : AsyncCaller {
+    override suspend fun call() {}
 }
